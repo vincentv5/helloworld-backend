@@ -1,5 +1,6 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const { Stocks} = require('../models');
 const router = express.Router();
 const {headersObj,coinbaseUrl} = require('../middleware');
 
@@ -66,7 +67,7 @@ router
 	const { id } = req.params;
 	//reqest to payment api goes here
 	const numberOfStock=2;
-	const newStocks = Stocks.findOne({_id:id}).then((data)=> {
+	const newStocks = .findOne({_id:id}).then((data)=> {
 		const  extract = data.licensekey.splice(0,numberOfStock);
 		return data.licensekey;
 	}).catch((err)=> {
