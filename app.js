@@ -15,6 +15,11 @@ mongoose.connect('mongodb://localhost/palitodb',{
 	// console.log(err);
 });
 app.use('/uploads',express.static('uploads'))
+app.get('/',((req,res,next)=>{
+
+	return res.status(200).json({message:'welcome home'});
+
+}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(controllers);
