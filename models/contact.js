@@ -20,7 +20,7 @@ const mongoose = require('mongoose');
       default:false,
     },
  
-  },{timestamp:true});
+  },{timestamps:true});
 
 
 

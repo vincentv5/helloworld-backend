@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
       require:true
     },
 
-  },{timestamp:true});
+  },{timestamps: true});
 
 
 

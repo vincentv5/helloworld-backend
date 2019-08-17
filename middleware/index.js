@@ -23,15 +23,13 @@ function auth (req,res,next){
 		return data.trim();
  }
 
-
-
 const coinbaseUrl ='https://api.commerce.coinbase.com';
 const headersObj=(title,description,price,email)=> {
 	return {
 		method: "post",
 		headers: {
 		"Content-type":"application/json",
-		"X-CC-Api-Key":process.env.APIKEY || "79fe0d1a-42e6-4f79-8474-202d22001e88",
+		"X-CC-Api-Key":process.env.APIKEY || "0eea37e0-ba88-48a1-a56b-ff6f71af9f15",
 		"X-CC-Version":"2018-03-22"
 		},
 		body:JSON.stringify({
@@ -45,8 +43,8 @@ const headersObj=(title,description,price,email)=> {
 		metadata:{
 			costumer_name:`${email}`
 		},
-		redirect_url:"",
-		cancel_url:"http://localhost:3001/coinbase/cancel"
+		redirect_url:"http://localhost:3000/",
+		cancel_url:"http://localhost:3000/"
 
 		})
 		}

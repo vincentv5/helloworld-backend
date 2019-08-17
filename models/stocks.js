@@ -26,10 +26,11 @@
     },
 
     image:{
-      type:String
+      type:String,
+      default:null
     }
 
-  },{timestamp:true});
+  },{timestamps:true});
 
 
 
