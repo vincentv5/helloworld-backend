@@ -12,15 +12,21 @@ const upload = require('./controllers/upload');
 const cors = require('cors');
 app.use(cors());
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://vincentv5:<password>@cluster0-ar2nn.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("palitodb").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
+// const mongoose = require('mongoose');
+// var mongodbUri ='mongodb://@ds249992.mlab.com:49992/databasename';
+// mongoose.connect(mongodbUri, {
+//   useNewUrlParser: true,
+//   auth: {
+//     user: 'UserName',
+//     password: 'Password'
+//   }
+// })
+// var conn = mongoose.connection;    
+// conn.on('error', console.error.bind(console, 'connection error:'));  
+ 
+// conn.once('open', () =>{
+//  console.log('connected to adatabase')                       
 // });
-
 
 mongoose.Promise=global.Promise;
 mongoose.connect('mongodb://localhost/palitodb',{
@@ -32,9 +38,7 @@ mongoose.connect('mongodb://localhost/palitodb',{
 });
 app.use('/uploads',express.static('uploads'))
 
-app.get('/',((req,res,next)=>{
-return res.status(200).json({message:'welcome home'});
-}))
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}));
@@ -44,6 +48,9 @@ app.use(contact);
 app.use(stock);
 app.use(upload);
 app.use(coinbase);
+app.get('/',((req,res,next)=>{
+return res.status(200).json({message:'welcome home!!!'});
+}))
 app.use((req,res,next)=>{
 	const err= new Error('NOT FOUND !');
 	err.status=401;
