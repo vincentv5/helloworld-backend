@@ -8,7 +8,6 @@ const contact = require('./controllers/contact');
 const stock = require('./controllers/stock');
 const coinbase = require('./controllers/coinbase');
 const upload = require('./controllers/upload');
-
 const cors = require('cors');
 app.use(cors());
 
@@ -37,20 +36,20 @@ mongoose.connect('mongodb://localhost/palitodb',{
 	// console.log(err);
 });
 app.use('/uploads',express.static('uploads'))
-
-
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}));
+
+app.get('/',((req,res,next)=>{
+	return res.status(200).json({message:'welcome home!!!'});
+	}));
+
 app.use(controllers);
 app.use(feedback);
 app.use(contact);
 app.use(stock);
 app.use(upload);
 app.use(coinbase);
-app.get('/',((req,res,next)=>{
-return res.status(200).json({message:'welcome home!!!'});
-}))
+
 app.use((req,res,next)=>{
 	const err= new Error('NOT FOUND !');
 	err.status=401;
